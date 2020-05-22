@@ -1,0 +1,14 @@
+{
+    "name": "readybytes/env-checker",
+    "description": "This will check invalid use of env variables.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chandra Bhan Singh Chouhan",
+            "email": "chandra_bhan@readybytes.in"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
