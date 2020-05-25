@@ -2,7 +2,7 @@
 # Laravel Env Checker
 
 [![Latest Stable Version](https://poser.pugx.org/readybytes/env-checker/v/stable)](https://packagist.org/packages/readybytes/env-checker)
-[![Total Downloads](https://poser.pugx.org/readybytes/env-checker/downloads)](https://packagist.org/packages/readybytes/env-checker)
+[![Total Downloads](https://poser.pugx.org/Readybytes/env-checker/downloads)](https://packagist.org/packages/readybytes/env-checker)
 [![License](https://poser.pugx.org/readybytes/env-checker/license)](https://packagist.org/packages/readybytes/env-checker)
 [![Issues](https://img.shields.io/github/issues/readybytes/env-checker.svg?style=flat-square)](https://github.com/readybytes/env-checker/issues)
 [![Stars](https://img.shields.io/github/stars/readybytes/env-checker.svg?style=flat-square)](https://github.com/readybytes/env-checker/stargazers)
