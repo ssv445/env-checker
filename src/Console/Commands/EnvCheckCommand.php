@@ -5,7 +5,7 @@ namespace Readybytes\EnvChecker\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Jsefton\DotEnv\Parser;
+use JSefton\DotEnv\Parser;
 
 class EnvCheckCommand extends Command
 {   

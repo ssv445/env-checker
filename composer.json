@@ -10,5 +10,20 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "Readybytes\\EnvChecker\\": "src/"
+        }
+    },
+
+    "require": {
+        "jsefton/php-dotenv-parser": "dev-master"
+    },
+    "extra": {
+        "laravel": {
+          "providers": [
+            "Readybytes\\EnvChecker\\EnvCheckServiceProvider"
+          ]
+        }
+      }
 }
