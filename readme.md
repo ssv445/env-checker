@@ -30,4 +30,4 @@ If value or variable not found in any env this will give you a warning message.
 
 ## Example
 
-![Example of env-checker](https://github.com/chandrabhan11/env-checker-screenshot)
+![Example of env-checker](https://github.com/chandrabhan11/env-checker-screenshot/blob/master/env-checker-example.png)
