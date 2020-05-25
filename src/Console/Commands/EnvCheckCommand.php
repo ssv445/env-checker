@@ -55,7 +55,7 @@ class EnvCheckCommand extends Command
         {   
             $basePath = base_path();
             $this->getAllEnv($basePath);
-            // $this->getAllFiles($basePath);
+            $this->getAllFiles($basePath);
 
         }
         catch (\Exception $exception)
@@ -65,9 +65,9 @@ class EnvCheckCommand extends Command
     }
     
 
+// Compair Env in root directory
 // Function to get all Env files name array
     function getAllEnv($basePath){
-
         $filesAndDirectoriesName = scandir($basePath);
         
         $filesName = array_filter(
@@ -77,22 +77,19 @@ class EnvCheckCommand extends Command
         if(count($filesName) == 0)
             $this->warn("No Env files found in your project directory : ". $basePath );
         else
-            $this->getEnvDataArray($filesName);
+            $this->getEnvData($filesName);
         
     }
 
 // Function to get array of env data and header for table
-    function getEnvDataArray($filesName){
-
+    function getEnvData($filesName){
         $headers = ['key'];
-
         foreach($filesName as $fileName) {
             $headers[] = $fileName;
             $envArray[$fileName] = array_filter(
                 Parser::envToArray($fileName), function ($key) { return !is_numeric($key); }, ARRAY_FILTER_USE_KEY
             );
         }
-
         $this->mergeArrayForTableData($envArray,$headers);
     }
 
@@ -119,37 +116,34 @@ class EnvCheckCommand extends Command
       }
 
 
-// Function to get all the directories
-    function getAllFiles($basePath){
+// Find env in all files
+// Function to get files from all the directories
+      function getAllFiles($basePath){
         foreach(File::directories($basePath) as $dir) { // Get all the directories
             if(Str::contains($dir, $this->ignore_dir)) { // Ignore directory
                 continue;
             }            
-            foreach(File::allFiles($dir) as $file) { // Get all the files in each directory
+            foreach(File::allFiles($dir) as $file) { // Get all the files path in each directory
                 if(Str::contains($file, $this->ignore_file)) { // Ignore files
                     continue;
                 } 
-                $files[] = pathinfo($file);
+                $filesPath[] = realpath($file);
             }
         }
-        $this->processEachFile($files);
+         $this->processEachFile($filesPath);
+
     }
 
-// Function process each file and find env variable in file
-    function processEachFile($files){
-        $this->warn("Files Use env Variables");
-
-        foreach($files as $file){
-            $url = $file['dirname'].'/'.$file['basename'];
-            $fileContent = file($url);
-            $search = 'env';
-            foreach($fileContent as $line)
-            {
-              // Check if the line contains the string we're looking for, and print if it does
-              if(strpos($line, $search))
-              $this->info($url);
-            }
+// Function to process each file and find env variable in file
+    function processEachFile($filesPath){
+        foreach($filesPath as $filePath)
+            exec('grep -Hniw "env(" '.$filePath , $output);
+        
+        if(count($output)){
+            $this->warn("Files Using env Variables");
+            print_r( implode( PHP_EOL, $output).PHP_EOL );
         }
+        else
+            $this->warn("No file Use env Variable. All good :)");
     }
-
 }
