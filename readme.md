@@ -26,7 +26,10 @@ Compare all env files available in your project directory.
 php artisan env:check
 ```
 This will generate a table containing all env variables with values.
+
 If value or variable not found in any env this will give you a warning message.
+
+Also you get files with line number where you used env variables directly.
 
 ## Example
 
