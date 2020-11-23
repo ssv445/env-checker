@@ -1,4 +1,3 @@
-
 # Laravel Env Checker
 
 [![Latest Stable Version](https://poser.pugx.org/readybytes/env-checker/v/stable)](https://packagist.org/packages/readybytes/env-checker)
@@ -22,12 +21,14 @@ and you are ready to go
 ## Usage
 
 Compare all env files available in your project directory.
+
 ```shell
 php artisan env:check
 ```
-This will generate a table containing all env variables with values.
 
+This will generate a table containing all env variables with values.
 If value or variable not found in any env this will give you a warning message.
+'-' for variable having no value and 'N/A' for variable not found.
 
 Also you get files with line number where you used env variables directly.
 
